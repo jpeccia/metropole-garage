@@ -1,23 +1,34 @@
-import { spawnVehicle } from "../services/api";
+import { Card } from "@/components/ui/card";
+import { Vehicle } from "@/types/vehicle";
+import { useVehicles } from "@/contexts/VehicleContext";
 
-type Vehicle = {
-    plate: string;
-    model: string;
-    color: string;
-};
+interface VehicleCardProps {
+  vehicle: Vehicle;
+}
 
-export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
-    return (
-        <div className="border p-4 rounded-lg shadow-md">
-            <h2 className="text-lg font-bold">{vehicle.model}</h2>
-            <p>Placa: {vehicle.plate}</p>
-            <p>Cor: {vehicle.color}</p>
-            <button
-                className="mt-2 bg-blue-600 text-white px-4 py-1 rounded"
-                onClick={() => spawnVehicle(vehicle.plate)}
-                >
-                Spawnar
-            </button>
+export function VehicleCard({ vehicle }: VehicleCardProps) {
+  const { selectedVehicle, setSelectedVehicle } = useVehicles();
+  const isSelected = selectedVehicle?.id === vehicle.id;
+  
+  return (
+    <Card 
+      className={`cursor-pointer transition-all duration-200 overflow-hidden h-[200px] ${
+        isSelected ? 'ring-2 ring-[#ffeeb2]' : 'hover:ring-1 hover:ring-gray-500'
+      }`}
+      onClick={() => setSelectedVehicle(vehicle)}
+    >
+      <div className="relative h-full">
+        <img 
+          src={vehicle.imageUrl} 
+          alt={vehicle.model}
+          className="object-cover h-full w-full"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <p className="text-[#ffeeb2] text-lg font-bold">{vehicle.make} {vehicle.model}</p>
+          <p className="text-gray-300 text-sm">{vehicle.year} • {vehicle.type}</p>
         </div>
-    )
+      </div>
+    </Card>
+  );
 }
