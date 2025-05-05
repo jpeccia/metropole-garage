@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { vehicles } from '@/data/vehicles';
-import type { Vehicle, VehicleContextType, VehicleType } from '@/types/vehicle';
+import { Vehicle, VehicleContextType, VehicleType } from '@/types/vehicle';
 import { toast } from '@/hooks/use-toast';
 
 const VehicleContext = createContext<VehicleContextType | undefined>(undefined);

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useVehicles } from "@/contexts/VehicleContext";
-import type { VehicleType } from "@/types/vehicle";
+import { VehicleType } from "@/types/vehicle";
 import { Car, Trophy, Truck, CircleDollarSign, Bike, Mountain } from "lucide-react";
 
 export function VehicleFilter() {

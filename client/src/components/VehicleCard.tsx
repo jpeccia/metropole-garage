@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
+import { Vehicle } from "@/types/vehicle";
 import { useVehicles } from "@/contexts/VehicleContext";
-import type { Vehicle } from "@/types/vehicle";
 
 interface VehicleCardProps {
   vehicle: Vehicle;

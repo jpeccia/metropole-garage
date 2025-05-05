@@ -1,8 +1,8 @@
 import { useVehicles } from '@/contexts/VehicleContext';
 import { VehicleCard } from './VehicleCard';
-import { GaugeIcon } from 'lucide-react';
 import { VehicleSpawnScreen } from './VehicleSpawnScreen';
 import { VehicleFilter } from './VehicleFilter';
+import { GaugeIcon } from 'lucide-react';
 
 export function VehicleGarage() {
   const { filteredVehicles, selectedVehicle } = useVehicles();

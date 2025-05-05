@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import type { Vehicle } from "@/types/vehicle";
+import { Vehicle } from "@/types/vehicle";
 import { SpawnButton } from "./SpawnButton";
 
 interface VehicleDetailsProps {
