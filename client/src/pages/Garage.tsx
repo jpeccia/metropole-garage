@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { VehicleCard } from "../components/VehicleCard";
+import { fetchVehicles } from "../services/api";
 
 export default function Garage() {
     const [vehicles, setVehicles ] = useState([]);

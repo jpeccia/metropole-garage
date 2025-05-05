@@ -1,3 +1,5 @@
+import { spawnVehicle } from "../services/api";
+
 type Vehicle = {
     plate: string;
     model: string;
