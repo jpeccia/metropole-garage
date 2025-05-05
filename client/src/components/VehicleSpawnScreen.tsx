@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Vehicle } from "@/types/vehicle";
+import type { Vehicle } from "@/types/vehicle";
 import { useVehicles } from "@/contexts/VehicleContext";
 import { ArrowLeft, Gauge, Zap, CircleDot, Anchor } from "lucide-react";
 

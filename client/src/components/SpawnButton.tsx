@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useVehicles } from "@/contexts/VehicleContext";
-import { Vehicle } from "@/types/vehicle";
+import type { Vehicle } from "@/types/vehicle";
 import { ArrowRightCircle } from "lucide-react";
 
 interface SpawnButtonProps {
