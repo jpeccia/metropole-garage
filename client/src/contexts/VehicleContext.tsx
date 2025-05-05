@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 import { vehicles } from '@/data/vehicles';
-import { Vehicle, VehicleContextType, VehicleType } from '@/types/vehicle';
+import type { Vehicle, VehicleContextType, VehicleType } from '@/types/vehicle';
 import { toast } from '@/hooks/use-toast';
 
 const VehicleContext = createContext<VehicleContextType | undefined>(undefined);
@@ -14,7 +14,6 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
     : vehicles.filter(vehicle => vehicle.type === filterType);
 
   const spawnVehicle = (vehicle: Vehicle) => {
-    // In a real application, this would make an API call to spawn the vehicle in-game
     toast({
       title: "Vehicle Spawned",
       description: `Your ${vehicle.year} ${vehicle.make} ${vehicle.model} has been spawned in the game.`,
