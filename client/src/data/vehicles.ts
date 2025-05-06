@@ -8,6 +8,7 @@ export const vehicles: Vehicle[] = [
     year: 2024,
     color: 'Black',
     type: 'exotic',
+    licensePlate: 'VLCN 24',
     performance: {
       topSpeed: 95,
       acceleration: 98,
@@ -31,6 +32,7 @@ export const vehicles: Vehicle[] = [
     year: 2023,
     color: 'Yellow',
     type: 'exotic',
+    licensePlate: 'LMBO 23',
     performance: {
       topSpeed: 97,
       acceleration: 96,
@@ -54,6 +56,7 @@ export const vehicles: Vehicle[] = [
     year: 2022,
     color: 'Red',
     type: 'sports',
+    licensePlate: 'FER 488',
     performance: {
       topSpeed: 94,
       acceleration: 95,
@@ -77,6 +80,7 @@ export const vehicles: Vehicle[] = [
     year: 2023,
     color: 'Silver',
     type: 'sports',
+    licensePlate: 'POR 911',
     performance: {
       topSpeed: 93,
       acceleration: 94,
@@ -100,6 +104,7 @@ export const vehicles: Vehicle[] = [
     year: 2022,
     color: 'Blue',
     type: 'sedan',
+    licensePlate: 'BMW M5',
     performance: {
       topSpeed: 88,
       acceleration: 87,
@@ -123,6 +128,7 @@ export const vehicles: Vehicle[] = [
     year: 2023,
     color: 'White',
     type: 'sedan',
+    licensePlate: 'AUD RS7',
     performance: {
       topSpeed: 87,
       acceleration: 88,
@@ -146,6 +152,7 @@ export const vehicles: Vehicle[] = [
     year: 2023,
     color: 'Green',
     type: 'motorcycle',
+    licensePlate: 'NJA 10R',
     performance: {
       topSpeed: 96,
       acceleration: 97,
@@ -166,6 +173,7 @@ export const vehicles: Vehicle[] = [
     year: 2022,
     color: 'Orange',
     type: 'offroad',
+    licensePlate: 'JEP RBN',
     performance: {
       topSpeed: 75,
       acceleration: 70,
@@ -189,6 +197,7 @@ export const vehicles: Vehicle[] = [
     year: 2023,
     color: 'Green',
     type: 'suv',
+    licensePlate: 'RRS 23',
     performance: {
       topSpeed: 80,
       acceleration: 78,
