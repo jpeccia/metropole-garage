@@ -12,7 +12,7 @@ export function SpawnButton({ vehicle }: SpawnButtonProps) {
 
   return (
     <Button 
-      className="w-full bg-[#ffeeb2] text-gray-900 hover:bg-[#ffe380] transition-colors"
+      className="w-full bg-[#BBDE1A] text-gray-900 hover:bg-[#ffe380] transition-colors"
       onClick={() => spawnVehicle(vehicle)}
     >
       <ArrowRightCircle className="w-5 h-5 mr-2" />

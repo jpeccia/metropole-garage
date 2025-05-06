@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useVehicles } from "@/contexts/VehicleContext";
 import { VehicleType } from "@/types/vehicle";
-import { Car, Trophy, Truck, CircleDollarSign, Bike, Mountain } from "lucide-react";
+import { Car, Trophy, Truck, CircleDollarSign, Bike, Mountain, CarFront } from "lucide-react";
 
 export function VehicleFilter() {
   const { filterType, setFilterType } = useVehicles();
@@ -9,6 +9,7 @@ export function VehicleFilter() {
   const filters: { value: VehicleType | 'all'; label: string; icon: React.ReactNode }[] = [
     { value: 'all', label: 'All', icon: <Car className="h-4 w-4" /> },
     { value: 'sports', label: 'Sports', icon: <Trophy className="h-4 w-4" /> },
+    { value: 'sedan', label: 'Sedans', icon: <CarFront className="h-4 w-4" /> },
     { value: 'exotic', label: 'Exotic', icon: <CircleDollarSign className="h-4 w-4" /> },
     { value: 'suv', label: 'SUV', icon: <Truck className="h-4 w-4" /> },
     { value: 'motorcycle', label: 'Motorcycle', icon: <Bike className="h-4 w-4" /> },
@@ -23,8 +24,8 @@ export function VehicleFilter() {
           variant={filterType === filter.value ? "default" : "outline"}
           className={`
             ${filterType === filter.value 
-              ? 'bg-[#ffeeb2] text-gray-900' 
-              : 'text-[#ffeeb2] hover:text-gray-900 hover:bg-[#ffeeb2]'
+              ? 'bg-[#BBDE1A] text-white-900' 
+              : 'text-[#BBDE1A] hover:text-gray-400 hover:bg-[#BBDE1A ]'
             }
           `}
           onClick={() => setFilterType(filter.value)}

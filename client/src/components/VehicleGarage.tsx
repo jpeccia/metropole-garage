@@ -15,8 +15,8 @@ export function VehicleGarage() {
     <div className="min-h-screen bg-[#1a1a1a] p-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-6">
-          <GaugeIcon className="h-8 w-8 text-[#ffeeb2]" />
-          <h1 className="text-3xl font-bold text-[#ffeeb2]">Vehicle Garage</h1>
+          <GaugeIcon className="h-8 w-8 text-[#BBDE1A]" />
+          <h1 className="text-3xl font-bold text-[#BBDE1A]">Vehicle Garage</h1>
         </div>
         
         <VehicleFilter />

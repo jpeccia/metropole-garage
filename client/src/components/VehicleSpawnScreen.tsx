@@ -24,7 +24,7 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
       <div className="max-w-4xl mx-auto">
         <Button 
           variant="ghost" 
-          className="text-[#ffeeb2] hover:text-[#ffe380] mb-6"
+          className="text-[#BBDE1A] hover:text-[#ffe380] mb-6"
           onClick={() => setSelectedVehicle(null)}
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
@@ -40,7 +40,7 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
-              <h1 className="text-3xl font-bold text-[#ffeeb2]">
+              <h1 className="text-3xl font-bold text-[#BBDE1A]">
                 {vehicle.year} {vehicle.make} {vehicle.model}
               </h1>
               <p className="text-gray-300 mt-2">
@@ -54,16 +54,16 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center text-[#ffeeb2]">
+                    <div className="flex items-center text-[#BBDE1A]">
                       {stat.icon}
                       <span className="ml-2">{stat.label}</span>
                     </div>
-                    <span className="text-[#ffeeb2]">{stat.value}%</span>
+                    <span className="text-[#BBDE1A]">{stat.value}%</span>
                   </div>
                   <Progress 
                     value={stat.value} 
                     className="h-2 bg-gray-800" 
-                    indicatorClassName="bg-[#ffeeb2]" 
+                    indicatorClassName="bg-[#BBDE1A]" 
                   />
                 </div>
               ))}
@@ -79,7 +79,7 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
                       <p className="text-gray-400 text-sm capitalize">
                         {key.replace(/([A-Z])/g, ' $1').trim()}
                       </p>
-                      <p className="text-[#ffeeb2]">{value}</p>
+                      <p className="text-[#BBDE1A]">{value}</p>
                     </div>
                   );
                 })}
@@ -87,7 +87,7 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
             )}
 
             <Button 
-              className="w-full bg-[#ffeeb2] text-gray-900 hover:bg-[#ffe380] h-12 text-lg mt-6"
+              className="w-full bg-[#BBDE1A] text-gray-900 hover:bg-[#ffe380] h-12 text-lg mt-6"
               onClick={() => spawnVehicle(vehicle)}
             >
               Spawn Vehicle
