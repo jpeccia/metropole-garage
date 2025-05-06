@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import express from 'express';
 import cors from 'cors';
+import vehicleRoutes from "./routes/vehicleRoutes";
 
 config();
 const app = express();

@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { vehicleService } from '../services/VehicleService';
 
 export const getAllVehiclesBySteamId = async (req: Request, res: Response) => {
     const { steamId } = req.params;
