@@ -5,6 +5,7 @@ export interface Vehicle {
   year: number;
   color: string;
   type: VehicleType;
+  licensePlate: string;
   performance: {
     topSpeed: number;
     acceleration: number;
