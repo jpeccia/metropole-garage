@@ -46,6 +46,9 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
               <p className="text-gray-300 mt-2">
                 {vehicle.type.charAt(0).toUpperCase() + vehicle.type.slice(1)} • {vehicle.color}
               </p>
+              <div className="flex items-center text-[#BBDE1A] bg-black/50 px-2 py-1 rounded">
+                  {vehicle.licensePlate}
+                </div>
             </div>
           </div>
 

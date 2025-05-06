@@ -27,6 +27,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
         <div className="absolute bottom-0 left-0 right-0 p-4">
           <p className="text-[#BBDE1A] text-lg font-bold">{vehicle.make} {vehicle.model}</p>
           <p className="text-gray-300 text-sm">{vehicle.year} • {vehicle.type}</p>
+          <p className="text-[#BBDE1A] text-sm mt-1">{vehicle.licensePlate}</p>
         </div>
       </div>
     </Card>
