@@ -18,6 +18,7 @@
   "dependencies": {
     "@prisma/client": "^6.7.0",
     "mysql2": "^3.14.1",
-    "prisma": "^6.7.0"
+    "prisma": "^6.7.0",
+    "server": "file:"
   }
 }
