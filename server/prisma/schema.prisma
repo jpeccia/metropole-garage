@@ -8,10 +8,37 @@ generator client {
 }
 
 model Vehicle {
-  id     Int    @id @default(autoincrement())
-  plate  String @unique
-  model  String
-  color  String
-  mods   Json
-  owner  String
+  id             String  @id @default(uuid())
+  make           String
+  model          String
+  year           Int
+  color          String
+  type           String
+  licensePlate   String  @unique
+  imageUrl       String
+
+  performance    Performance
+  customizations Customizations
+}
+
+model Performance {
+  id         String  @id @default(uuid())
+  topSpeed   Int
+  acceleration Int
+  handling   Int
+  braking    Int
+  vehicle    Vehicle @relation(fields: [vehicleId], references: [id])
+  vehicleId  String  @unique
+}
+
+model Customizations {
+  id         String  @id @default(uuid())
+  bodyKit    String?
+  wheels     String?
+  paintJob   String?
+  interior   String?
+  spoiler    Boolean?
+  neonLights Boolean?
+  vehicle    Vehicle @relation(fields: [vehicleId], references: [id])
+  vehicleId  String  @unique
 }
