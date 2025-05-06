@@ -8,15 +8,28 @@ datasource db {
 }
 
 model Vehicle {
-  id             String  @id @default(uuid())
-  make           String
-  model          String
-  year           Int
-  color          String
-  type           String
-  licensePlate   String  @unique
-  imageUrl       String
-  steamId        String  // identificador do dono
-  customizations Json
-  performance    Json
+  id            String   @id @default(uuid())
+  make          String
+  model         String
+  year          Int
+  color         String
+  type          String
+  licensePlate  String   @unique
+  imageUrl      String
+
+  // performance
+  topSpeed      Float
+  acceleration  Float
+  handling      Float
+  braking       Float
+
+  // customizations
+  bodyKit       String?
+  wheels        String?
+  paintJob      String?
+  interior      String?
+  spoiler       Boolean?
+  neonLights    Boolean?
+
+  ownerSteamId  String
 }
