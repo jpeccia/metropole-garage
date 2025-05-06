@@ -1,10 +1,10 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model Vehicle {
@@ -16,29 +16,7 @@ model Vehicle {
   type           String
   licensePlate   String  @unique
   imageUrl       String
-
-  performance    Performance
-  customizations Customizations
-}
-
-model Performance {
-  id         String  @id @default(uuid())
-  topSpeed   Int
-  acceleration Int
-  handling   Int
-  braking    Int
-  vehicle    Vehicle @relation(fields: [vehicleId], references: [id])
-  vehicleId  String  @unique
-}
-
-model Customizations {
-  id         String  @id @default(uuid())
-  bodyKit    String?
-  wheels     String?
-  paintJob   String?
-  interior   String?
-  spoiler    Boolean?
-  neonLights Boolean?
-  vehicle    Vehicle @relation(fields: [vehicleId], references: [id])
-  vehicleId  String  @unique
+  steamId        String  // identificador do dono
+  customizations Json
+  performance    Json
 }
