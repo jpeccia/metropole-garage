@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { vehicleService } from '../services/VehicleService';
+import { prisma } from '../prisma/client';
 
 export const getAllVehiclesBySteamId = async (req: Request, res: Response) => {
     const { steamId } = req.params;
@@ -21,3 +22,20 @@ export const getVehicleByPlate = async (req: Request, res: Response) => {
       res.status(500).json({ error: 'Erro ao buscar veículo' });
     }
 };
+
+export const getAllVehicles = async (req: Request, res: Response) => {
+    try {
+      const vehicles = await prisma.vehicle.findMany();
+      res.json(vehicles);
+    } catch (err) {
+      res.status(500).json({ error: 'Erro ao buscar veículos' });
+    }
+  };
+  
+  export const spawnVehicle = async (req: Request, res: Response) => {
+    const vehicle = req.body;
+  
+    console.log('Spawning vehicle:', vehicle);
+  
+    res.status(200).json({ success: true, message: 'Vehicle spawned!' });
+  };
