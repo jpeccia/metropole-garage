@@ -30,6 +30,17 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Garage
         </Button>
+        <button
+          onClick={() => {
+            fetch('https://metropole_garage/garage:close', {
+              method: 'POST',
+              body: JSON.stringify({})
+            });
+          }}
+          className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded"
+        >
+          Fechar
+        </button>
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative h-[300px] rounded-lg overflow-hidden">

@@ -30,20 +30,20 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
     return res.json();
   };
 
-  useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const data = await fetchNui<Vehicle[]>('getVehicles');
-        setVehicles(data);
-      } catch (err) {
-        console.error('Failed to load vehicles:', err);
-        toast({
-          title: 'Erro',
-          description: 'Não foi possível carregar os veículos.',
-          variant: 'destructive',
-        });
-      }
-    };
+    useEffect(() => {
+      const fetchVehicles = async () => {
+        try {
+          const data = await fetchNui<Vehicle[]>('getVehicles');
+          setVehicles(data);
+        } catch (err) {
+          console.error('Failed to load vehicles:', err);
+          toast({
+            title: 'Erro',
+            description: 'Não foi possível carregar os veículos.',
+            variant: 'destructive',
+          });
+        }
+      };
 
     fetchVehicles();
   }, []);
