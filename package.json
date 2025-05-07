@@ -1,0 +1,30 @@
+{
+  "name": "metropole-garage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/server/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpeccia/metropole-garage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jpeccia/metropole-garage/issues"
+  },
+  "homepage": "https://github.com/jpeccia/metropole-garage#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.15",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "metropole-garage": "file:"
+  }
+}
