@@ -2,6 +2,7 @@ local garageUIOpen = false
 
 -- Abrir com a tecla G
 RegisterCommand("toggleGarage", function()
+    print("Comando toggleGarage executado")
     garageUIOpen = not garageUIOpen
     SetNuiFocus(garageUIOpen, garageUIOpen)
     SendNUIMessage({
@@ -9,6 +10,7 @@ RegisterCommand("toggleGarage", function()
         show = garageUIOpen
     })
 end)
+
 
 -- Mapear tecla G para o comando
 RegisterKeyMapping("toggleGarage", "Abrir a Garagem", "keyboard", "G")
