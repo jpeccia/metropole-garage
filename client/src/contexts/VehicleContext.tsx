@@ -65,7 +65,6 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
       toast({
         title: 'Vehicle Spawned',
         description: `Your ${vehicle.year} ${vehicle.make} ${vehicle.model} with plate ${vehicle.licensePlate} has been spawned in the game.`,
-        variant: 'success',
       });
     } catch (err) {
       console.error('Spawn error:', err);
