@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "vite ./../src/index.ts",
+    "dev": "vite src/index.ts",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

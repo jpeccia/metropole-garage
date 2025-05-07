@@ -1,1 +1,1 @@
-console.log('Metropole-Garage iniciou...');
+console.log('[metropole-garage] Script carregado com sucesso!');
