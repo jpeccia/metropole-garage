@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@citizenfx/client": "^2.0.14901-1",
+    "@citizenfx/server": "^2.0.14862-1",
     "@prisma/client": "^5.0.0",
+    "@types/webpack-env": "^1.18.8",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   },
