@@ -9,25 +9,25 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [filterType, setFilterType] = useState<VehicleType | 'all'>('all');
 
-  const isEnvBrowser = typeof window !== 'undefined';
-  const isNuiEnv = isEnvBrowser && (window as any).invokeNative;
+  const isBrowser = typeof window !== 'undefined';
+  const isNui = isBrowser && typeof (window as any).invokeNative === 'function';
 
-  const fetchNui = async <T>(event: string, data?: any): Promise<T> => {
-    if (isNuiEnv) {
-      const res = await fetch(`https://metropole-garage/${event}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data || {}),
-      });
-      return res.json();
-    } else {
-      const res = await fetch(`http://localhost:3001/${event}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data || {}),
-      });
-      return res.json();
+  const fetchNui = async <T = unknown>(event: string, data?: unknown): Promise<T> => {
+    const url = isNui
+      ? `https://metropole-garage/${event}`
+      : `http://localhost:3001/${event}`;
+
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data || {}),
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status} - ${res.statusText}`);
     }
+
+    return res.json();
   };
 
   useEffect(() => {
@@ -55,13 +55,12 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
   const spawnVehicle = async (vehicle: Vehicle) => {
     try {
       await fetchNui('spawnVehicle', vehicle);
-
       toast({
-        title: 'Vehicle Spawned',
-        description: `Your ${vehicle.year} ${vehicle.make} ${vehicle.model} with plate ${vehicle.licensePlate} has been spawned in the game.`,
+        title: 'Veículo Spawnado',
+        description: `${vehicle.year} ${vehicle.make} ${vehicle.model} (${vehicle.licensePlate}) foi spawnado.`,
       });
     } catch (err) {
-      console.error('Spawn error:', err);
+      console.error('Erro ao spawnar veículo:', err);
       toast({
         title: 'Erro ao spawnar veículo',
         description: 'Algo deu errado ao tentar spawnar o veículo.',
@@ -89,7 +88,7 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
 
 export const useVehicles = (): VehicleContextType => {
   const context = useContext(VehicleContext);
-  if (context === undefined) {
+  if (!context) {
     throw new Error('useVehicles must be used within a VehicleProvider');
   }
   return context;
