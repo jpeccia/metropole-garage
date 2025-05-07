@@ -21,7 +21,13 @@
   },
   "homepage": "https://github.com/jpeccia/metropole-garage#readme",
   "devDependencies": {
+    "@citizenfx/server": "2.0.9282-1",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^22.15.15",
+    "rollup": "^4.20.0",
+    "tslib": "^2.6.3",
     "typescript": "^5.8.3"
   },
   "dependencies": {

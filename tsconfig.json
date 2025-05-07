@@ -4,6 +4,7 @@
       "module": "CommonJS",
       "rootDir": "./server",
       "outDir": "./dist",
+      "types": ["@citizenfx/server", "@types/node"],
       "strict": true,
       "esModuleInterop": true
     },

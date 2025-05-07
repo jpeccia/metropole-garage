@@ -3,8 +3,19 @@ import { isAdmin } from './utils';
 
 onNet('metropole:getPlayerVehicles', async () => {
   const src = global.source as number;
-  const identifier = GetPlayerIdentifier(src, 0); // ou use SteamID dependendo da base
-  const vehicles = await getVehicles(identifier);
+  const identifiers = getPlayerIdentifiers(src);
+
+  const license = identifiers.find(id => id.startsWith('license:'));
+  const steam = identifiers.find(id => id.startsWith('steam:'));
+
+  const mainIdentifier = license || steam;
+
+  if (!mainIdentifier) {
+    console.warn(`Nenhum identificador válido encontrado para o jogador ${src}`);
+    return;
+  }
+
+  const vehicles = await getVehicles(mainIdentifier);
   emitNet('metropole:returnPlayerVehicles', src, vehicles);
 });
 
