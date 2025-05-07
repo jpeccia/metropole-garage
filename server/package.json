@@ -13,6 +13,8 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
+    "@citizenfx/server": "^2.0.14862-1",
+    "@overextended/oxmysql": "^1.4.2",
     "server": "file:"
   }
 }
