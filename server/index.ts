@@ -1,6 +1,10 @@
 import { getVehicles, saveVehicleState } from './vehicleController';
 import { isAdmin } from './utils';
 
+declare function RegisterNuiCallbackType(name: string): void;
+declare function on(event: string, callback: (...args: any[]) => void): void;
+
+
 onNet('metropole:getPlayerVehicles', async () => {
   const src = global.source as number;
   const identifiers = getPlayerIdentifiers(src);
@@ -39,3 +43,25 @@ onNet('metropole:adminSpawnVehicle', (plate: string, model: string, color: strin
 
   TriggerEvent('metropole:adminSpawnVehicleLua', src, plate, model, color, customizations);
 });
+
+RegisterNuiCallbackType('getVehicles');
+
+on('getVehicles', async (data: any, cb: Function) => {
+  const _source = (global as any).source;
+  const src = typeof _source === 'number' ? _source : 1;
+
+  const identifiers = getPlayerIdentifiers(src);
+  const license = identifiers.find((id) => id.startsWith('license:'));
+  const steam = identifiers.find((id) => id.startsWith('steam:'));
+  const mainIdentifier = license || steam;
+
+  if (!mainIdentifier) {
+    console.warn(`Nenhum identificador válido encontrado para o jogador ${src}`);
+    cb([]); // fallback vazio
+    return;
+  }
+
+  const vehicles = await getVehicles(mainIdentifier);
+  cb(vehicles);
+});
+

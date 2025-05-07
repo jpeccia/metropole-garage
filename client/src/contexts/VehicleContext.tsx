@@ -14,7 +14,7 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchNui = async <T = unknown>(event: string, data?: unknown): Promise<T> => {
     const url = isNui
-      ? `https://metropole-garage/${event}`
+      ? `https://metropole_garage/${event}`
       : `http://localhost:3001/${event}`;
 
     const res = await fetch(url, {
