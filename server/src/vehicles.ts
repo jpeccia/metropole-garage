@@ -1,3 +1,4 @@
+import type { VehicleData } from "./types.ts";
 
 onNet('metropole-garage:getVehicles', () => {
   const _source = global.source;
