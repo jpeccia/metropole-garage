@@ -9,23 +9,31 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [filterType, setFilterType] = useState<VehicleType | 'all'>('all');
 
+  const isEnvBrowser = typeof window !== 'undefined';
+  const isNuiEnv = isEnvBrowser && (window as any).invokeNative;
+
+  const fetchNui = async <T>(event: string, data?: any): Promise<T> => {
+    if (isNuiEnv) {
+      const res = await fetch(`https://metropole-garage/${event}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data || {}),
+      });
+      return res.json();
+    } else {
+      const res = await fetch(`http://localhost:3001/${event}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data || {}),
+      });
+      return res.json();
+    }
+  };
+
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const isNui = typeof window !== 'undefined' && (window as any).invokeNative;
-
-        let data: Vehicle[] = [];
-
-        if (isNui) {
-          const res = await fetch('https://metropole-garage/getVehicles', {
-            method: 'POST',
-          });
-          data = await res.json();
-        } else {
-          const res = await fetch('http://localhost:3001/vehicles');
-          data = await res.json();
-        }
-
+        const data = await fetchNui<Vehicle[]>('getVehicles');
         setVehicles(data);
       } catch (err) {
         console.error('Failed to load vehicles:', err);
@@ -46,21 +54,7 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
 
   const spawnVehicle = async (vehicle: Vehicle) => {
     try {
-      const isNui = typeof window !== 'undefined' && (window as any).invokeNative;
-
-      if (isNui) {
-        await fetch('https://metropole-garage/spawnVehicle', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(vehicle),
-        });
-      } else {
-        await fetch('http://localhost:3001/spawn', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(vehicle),
-        });
-      }
+      await fetchNui('spawnVehicle', vehicle);
 
       toast({
         title: 'Vehicle Spawned',
