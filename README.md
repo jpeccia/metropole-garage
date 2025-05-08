@@ -1,7 +1,12 @@
-
 # Garagem FiveM - Backend e Frontend
 
-Este projeto é um sistema de garagem para servidor FiveM, com funcionalidades de gerenciamento de veículos e integração entre frontend e backend. O backend foi desenvolvido utilizando **TypeScript** e o frontend foi feito com **React**, **TypeScript**, **Tailwind CSS**, **ShadCN** e **Toast**.
+Este projeto é um sistema de garagem para servidor FiveM, com funcionalidades de gerenciamento de veículos e integração entre frontend e backend. O backend foi desenvolvido utilizando **TypeScript**, **LUA** e o frontend foi feito com **React**, **TypeScript**, **Tailwind CSS**, **ShadCN** e **Toast**.
+
+## Demonstração em Vídeo
+
+Para visualizar o funcionamento completo do sistema de garagem dentro do jogo, assista ao vídeo demonstrativo abaixo:
+
+📹 [Clique aqui para assistir à demonstração do script](https://youtu.be/LrKPfyAS0Mo)
 
 ## Funcionalidades
 
@@ -19,9 +24,9 @@ Este projeto é um sistema de garagem para servidor FiveM, com funcionalidades d
 
 ### Backend:
 - **Node.js** com **TypeScript**: Para construção do backend que comunica com o servidor FiveM.
-- **Express**: Framework para criação de rotas e estrutura de API.
 - **MySQL (via `oxmysql`)**: Banco de dados utilizado para armazenar as informações dos veículos.
 - **Docker**: Containerização do ambiente de desenvolvimento.
+- **LUA**: Utilizado para a integração com os eventos do FiveM.
 
 ## Como Rodar o Projeto
 
@@ -29,7 +34,7 @@ Este projeto é um sistema de garagem para servidor FiveM, com funcionalidades d
 
 - **Docker**: Para rodar o banco de dados em ambiente isolado.
 - **Node.js**: Para buildar.
-- **npm/yarn**: Gerenciadores de pacotes para o frontend e backend.
+- **npm/yarn**: Gerenciadores de pacotes para o backend.
 
 ### Configuração do Banco de Dados
 
@@ -67,18 +72,19 @@ Para rodar o banco de dados em um ambiente de desenvolvimento, você pode usar o
    cp -r metropole-garage /caminho/para/seu/server/resources/
    ```
 
-2. adicione oxmysql para sua pasta resources  
+2. Adicione `oxmysql` à sua pasta `resources`
 
-3. adicione `ensure oxmysql`  
- `ensure metropole-garage` para seu server.cfg 
+3. No `server.cfg`, adicione as linhas:
+   ```
+   ensure oxmysql
+   ensure metropole-garage
+   ```
 
-1. Agora, inicie o servidor do FiveM
+4. Agora, inicie o servidor do FiveM
 
 ### Acessando a Garagem
 
 - **Abrir a garagem**: Aperte a tecla **G** ou digite o comando `/toggleGarage` no chat para abrir a garagem.
-
-  Com isso, o sistema de garagem será exibido e o jogador poderá interagir com seus veículos.
 
 ## Comandos Extras
 
@@ -97,14 +103,12 @@ Para rodar o banco de dados em um ambiente de desenvolvimento, você pode usar o
 
 - **Gerenciamento de veículos**: Adicionar, remover e listar veículos com base na placa e status do veículo.
 - **Sistema de spawn**: Permite que os jogadores spawnem veículos armazenados em sua garagem.
-- **Guardar seus veiculos**: Permite que os jogadores guardem seus veiculos spawnados em sua garagem.
-
+- **Guardar seus veículos**: Permite que os jogadores guardem seus veículos spawnados em sua garagem.
 
 ## Futuras Melhorias
 
 - **Visualização 3D dos veículos**: No futuro, pretende-se substituir as imagens estáticas dos veículos por visualizações em 3D utilizando os arquivos OBJ dos modelos reais do GTA V.
   Isso permitirá que os veículos sejam exibidos com suas personalizações aplicadas em um cenário fictício e interativo, proporcionando uma experiência visual mais fiel ao jogo.
-
 
 ## Contribuições
 
