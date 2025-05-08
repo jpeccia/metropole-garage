@@ -37,8 +37,8 @@ Para rodar o banco de dados em um ambiente de desenvolvimento, você pode usar o
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/jpeccia/metropole-garage.git
-   cd metropole-garage
+   git clone https://github.com/jpeccia/metropolegarage.git
+   cd metropolegarage
    ```
 
 2. Suba o banco de dados usando o Docker:
