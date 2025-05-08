@@ -8,6 +8,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
   plugins: [react()],
+  base: './',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

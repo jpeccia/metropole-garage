@@ -13,26 +13,26 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
   const { performance, customizations } = vehicle;
 
   const stats = [
-    { label: "Top Speed", value: performance.topSpeed, icon: <Gauge className="w-5 h-5" /> },
-    { label: "Acceleration", value: performance.acceleration, icon: <Zap className="w-5 h-5" /> },
+    { label: "Velocidade Máxima", value: performance.topSpeed, icon: <Gauge className="w-5 h-5" /> },
+    { label: "Aceleração", value: performance.acceleration, icon: <Zap className="w-5 h-5" /> },
     { label: "Handling", value: performance.handling, icon: <CircleDot className="w-5 h-5" /> },
-    { label: "Braking", value: performance.braking, icon: <Anchor className="w-5 h-5" /> },
+    { label: "Freio", value: performance.braking, icon: <Anchor className="w-5 h-5" /> },
   ];
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] p-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+      <div className="relative w-full max-w-6xl mx-auto bg-[#1a1a1a] p-6 rounded-2xl shadow-2xl border border-gray-700">
         <Button 
           variant="ghost" 
           className="text-[#BBDE1A] hover:text-[#ffe380] mb-6"
           onClick={() => setSelectedVehicle(null)}
         >
           <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Garage
+          Voltar
         </Button>
         <button
           onClick={() => {
-            fetch('https://metropole_garage/garage:close', {
+            fetch('https://metropolegarage/garage:close', {
               method: 'POST',
               body: JSON.stringify({})
             });
@@ -104,7 +104,7 @@ export function VehicleSpawnScreen({ vehicle }: VehicleSpawnScreenProps) {
               className="w-full bg-[#BBDE1A] text-gray-900 hover:bg-[#ffe380] h-12 text-lg mt-6"
               onClick={() => spawnVehicle(vehicle)}
             >
-              Spawn Vehicle
+              Spawnar
             </Button>
           </div>
         </div>

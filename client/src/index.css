@@ -15,3 +15,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+html, body {
+  background-color: transparent !important;
+  min-height: 0 !important;
+}

@@ -8,13 +8,13 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
   const [filterType, setFilterType] = useState<VehicleType | 'all'>('all');
-
+  
   const isBrowser = typeof window !== 'undefined';
   const isNui = isBrowser && typeof (window as any).invokeNative === 'function';
 
   const fetchNui = async <T = unknown>(event: string, data?: unknown): Promise<T> => {
     const url = isNui
-      ? `https://metropole_garage/${event}`
+      ? `https://metropolegarage/${event}`
       : `http://localhost:3001/${event}`;
 
     const res = await fetch(url, {
@@ -24,37 +24,44 @@ export const VehicleProvider = ({ children }: { children: ReactNode }) => {
     });
 
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status} - ${res.statusText}`);
+      const errorText = await res.text();
+      throw new Error(`HTTP ${res.status} - ${res.statusText}: ${errorText}`);
     }
 
     return res.json();
   };
 
-    useEffect(() => {
-      const fetchVehicles = async () => {
-        try {
-          const data = await fetchNui<Vehicle[]>('getVehicles');
-          setVehicles(data);
-        } catch (err) {
-          console.error('Failed to load vehicles:', err);
-          toast({
-            title: 'Erro',
-            description: 'Não foi possível carregar os veículos.',
-            variant: 'destructive',
-          });
-        }
-      };
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      try {
+        const data = await fetchNui<Vehicle[]>('getVehicles');
+        setVehicles(data || []);
+      } catch (err) {
+        console.error('Falha ao carregar os veículos:', err);
+        toast({
+          title: 'Erro',
+          description: 'Não foi possível carregar os veículos.',
+          variant: 'destructive',
+        });
+      }
+    };
 
     fetchVehicles();
   }, []);
 
-  const filteredVehicles = filterType === 'all'
-    ? vehicles
-    : vehicles.filter(vehicle => vehicle.type === filterType);
+  const filteredVehicles =
+    filterType === 'all'
+      ? vehicles
+      : vehicles.filter((vehicle) => vehicle.type === filterType);
 
   const spawnVehicle = async (vehicle: Vehicle) => {
     try {
-      await fetchNui('spawnVehicle', vehicle);
+      await fetchNui('garage:spawnVehicle', {
+        plate: vehicle.licensePlate,
+        model: vehicle.model,
+        color: vehicle.color,
+        customizations: vehicle.customizations,
+      });
       toast({
         title: 'Veículo Spawnado',
         description: `${vehicle.year} ${vehicle.make} ${vehicle.model} (${vehicle.licensePlate}) foi spawnado.`,

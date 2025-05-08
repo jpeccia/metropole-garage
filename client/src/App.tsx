@@ -20,6 +20,10 @@ function App() {
     return () => window.removeEventListener('message', handleMessage);
   }, []);
 
+  useEffect(() => {
+    document.body.style.backgroundColor = visible ? '#1a1a1a' : 'transparent';
+  }, [visible]);
+
   if (!visible) return null;
 
   return (

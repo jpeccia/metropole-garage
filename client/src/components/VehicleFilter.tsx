@@ -7,12 +7,12 @@ export function VehicleFilter() {
   const { filterType, setFilterType } = useVehicles();
   
   const filters: { value: VehicleType | 'all'; label: string; icon: React.ReactNode }[] = [
-    { value: 'all', label: 'All', icon: <Car className="h-4 w-4" /> },
-    { value: 'sports', label: 'Sports', icon: <Trophy className="h-4 w-4" /> },
+    { value: 'all', label: 'Todos', icon: <Car className="h-4 w-4" /> },
+    { value: 'sports', label: 'Esportivos', icon: <Trophy className="h-4 w-4" /> },
     { value: 'sedan', label: 'Sedans', icon: <CarFront className="h-4 w-4" /> },
-    { value: 'exotic', label: 'Exotic', icon: <CircleDollarSign className="h-4 w-4" /> },
+    { value: 'exotic', label: 'Diferentes', icon: <CircleDollarSign className="h-4 w-4" /> },
     { value: 'suv', label: 'SUV', icon: <Truck className="h-4 w-4" /> },
-    { value: 'motorcycle', label: 'Motorcycle', icon: <Bike className="h-4 w-4" /> },
+    { value: 'motorcycle', label: 'Motos', icon: <Bike className="h-4 w-4" /> },
     { value: 'offroad', label: 'Off-road', icon: <Mountain className="h-4 w-4" /> },
   ];
 
