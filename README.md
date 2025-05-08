@@ -20,7 +20,6 @@ Este projeto é um sistema de garagem para servidor FiveM, com funcionalidades d
 ### Backend:
 - **Node.js** com **TypeScript**: Para construção do backend que comunica com o servidor FiveM.
 - **Express**: Framework para criação de rotas e estrutura de API.
-- **Prisma**: ORM para gerenciamento de banco de dados.
 - **MySQL (via `oxmysql`)**: Banco de dados utilizado para armazenar as informações dos veículos.
 - **Docker**: Containerização do ambiente de desenvolvimento.
 
